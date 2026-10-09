@@ -1,0 +1,62 @@
+{
+    "instance": "data/learning-balanced/instance-01",
+    "output": "data/experiments/mlp",
+    "defaults": {
+        "epochs": 50,
+        "patience": 5,
+        "seed": 1
+    },
+    "runs": [
+        {
+            "name": "baseline",
+            "hidden": [
+                256
+            ],
+            "batch_rows": 8192
+        },
+        {
+            "name": "balanced",
+            "hidden": [
+                256
+            ],
+            "class_weight": "balanced",
+            "batch_rows": 8192
+        },
+        {
+            "name": "dropout",
+            "hidden": [
+                256
+            ],
+            "dropout": 0.3,
+            "class_weight": "balanced",
+            "batch_rows": 8192
+        },
+        {
+            "name": "weight-decay",
+            "hidden": [
+                256
+            ],
+            "weight_decay": 0.001,
+            "class_weight": "balanced",
+            "batch_rows": 8192
+        },
+        {
+            "name": "smaller",
+            "hidden": [
+                128
+            ],
+            "class_weight": "balanced",
+            "batch_rows": 8192
+        },
+        {
+            "name": "dropout-decay",
+            "hidden": [
+                256
+            ],
+            "dropout": 0.3,
+            "weight_decay": 0.001,
+            "class_weight": "balanced",
+            "batch_rows": 8192
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+[project]
+name = "trustmebro"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Eero", email = "eero.lampela@gmail.com" }]
+requires-python = ">=3.14"
+dependencies = ["ortools>=9.15.6755,<10"]
+
+[project.scripts]
+extract-dataset = "trustmebro.extraction.scheduler:pipeline_main"
+find-files = "trustmebro.extraction.scheduler:find_main"
+proof-states = "trustmebro.extraction.scheduler:main"
+partition-corpus = "trustmebro.preprocessing.partition:main"
+graphs = "trustmebro.visualization.cli:main"
+prepare-features = "trustmebro.preprocessing.pipeline:main"
+train-logistic = "trustmebro.logistic.train:main"
+train-mlp = "trustmebro.mlp.experiments:main"
+plot-results = "trustmebro.visualization.results:main"
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 120
+extend-exclude = [".venvs", ".pixi"]
+fix-only = true
+target-version = "py314"
+format.skip-magic-trailing-comma = true
+lint.dummy-variable-rgx = "^_$"
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = [{ name = "linux-64-cuda", platform = "linux-64", cuda = "12.9" }]
+
+[tool.pixi.pypi-dependencies]
+trustmebro = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+graph-tool = ">=3.9,<4"
+numba = ">=0.68.0,<0.69"
+scikit-learn = ">=1.9.1,<2"
+msgspec = ">=0.22.0,<0.23"
+umap-learn = ">=0.5.12,<0.6"
+google-re2 = ">=1.1.20251105,<2"
+datashader = ">=0.19.1,<0.20"
+numpy = ">=2.5.3,<3"
+graphviz = ">=14.1.2,<15"
+matplotlib-base = ">=3.11.2,<4"
+pandas = ">=3.0.6,<4"
+scipy = ">=1.18.1,<2"
+threadpoolctl = ">=3.7.0,<4"
+pycairo = ">=1.29.2,<2"
+pytorch-gpu = ">=2.13.0,<3"
+cuda-version = ">=12.9,<13"

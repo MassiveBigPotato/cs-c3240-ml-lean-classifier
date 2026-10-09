@@ -1,0 +1,45 @@
+{
+    "instance": "data/learning-balanced/instance-01",
+    "output": "data/experiments/mlp-deeper",
+    "defaults": {
+        "hidden": [
+            256,
+            128
+        ],
+        "batch_rows": 8192,
+        "epochs": 50,
+        "patience": 5,
+        "lr": 0.001,
+        "weight_decay": 0.0001,
+        "dropout": 0.0,
+        "class_weight": "none",
+        "label_smoothing": 0.0,
+        "scaling": "maxabs",
+        "seed": 1
+    },
+    "runs": [
+        {
+            "name": "baseline"
+        },
+        {
+            "name": "dropout",
+            "dropout": 0.3
+        },
+        {
+            "name": "inverse-sqrt",
+            "class_weight": "inverse_sqrt"
+        },
+        {
+            "name": "inverse-sqrt-dropout",
+            "class_weight": "inverse_sqrt",
+            "dropout": 0.3
+        },
+        {
+            "name": "deeper-wider",
+            "hidden": [
+                256,
+                256
+            ]
+        }
+    ]
+}
